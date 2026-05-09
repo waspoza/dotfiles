@@ -1,0 +1,21 @@
+[window]
+opacity = 0.8
+blur = true   
+dimensions = { columns = 140, lines = 40 }
+
+[font]
+normal = { family = "JetBrains Mono", style = "Regular" }
+size = 12.0   
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/nord.toml"
+]
+
+[cursor]
+blink_interval = 500  # Interval in milliseconds
+blink_timeout = 0     # Stop blinking after this many seconds (0 to disable timeout)
+
+[cursor.style]
+shape = "Block"        # "Block", "Underline", or "Beam"
+blinking = "Always"       # "Never", "Off", "On", or "Always"   
