@@ -15,7 +15,11 @@ function starship_transient_prompt_func
     starship module character
 end
 starship init fish | source
-#enable_transience
+function starship_transient_prompt_func
+    starship module custom.transient
+    starship module character
+end
+enable_transience
 
 alias less="TERM=xterm-256color command less"
 set -gx PAGER "TERM=xterm-256color less"
