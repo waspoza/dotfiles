@@ -8,6 +8,8 @@ source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
+set -gx BAT_PAGER "less -RF"
+set -gx MANPAGER "sh -c 'col -bx | bat -l man --paging=always -p'"
 #set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
 set -gx SSH_AUTH_SOCK ~/.bitwarden-ssh-agent.sock
 
@@ -15,6 +17,7 @@ function starship_transient_prompt_func
     starship module character
 end
 starship init fish | source
+# without it transient prompt is not working
 function starship_transient_prompt_func
     starship module custom.transient
     starship module character
