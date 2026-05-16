@@ -11,7 +11,8 @@ set -gx VISUAL nvim
 set -gx BAT_PAGER "less -RF"
 set -gx MANPAGER "sh -c 'col -bx | bat -l man --paging=always -p'"
 #set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
-set -gx SSH_AUTH_SOCK ~/.bitwarden-ssh-agent.sock
+#set -gx SSH_AUTH_SOCK ~/.bitwarden-ssh-agent.sock
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
 
 function starship_transient_prompt_func
     starship module character
@@ -31,4 +32,6 @@ alias vim="nvim"
 alias vi="nvim"
 
 # enable zoxide
-zoxide init --cmd cd fish | source
+#zoxide init --cmd cd fish | source
+# enable fzf
+fzf --fish | source

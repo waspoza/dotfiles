@@ -165,3 +165,15 @@ return {
   },
   { "LazyVim/LazyVim", opts = { colorscheme = "nordic" } },
 }
+-- return {
+--   -- Add the Gruvbox plugin
+--   { "ellisonleao/gruvbox.nvim" },
+--
+--   -- Configure LazyVim to use Gruvbox
+--   {
+--     "LazyVim/LazyVim",
+--     opts = {
+--       colorscheme = "gruvbox",
+--     },
+--   },
+-- }
