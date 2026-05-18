@@ -1,0 +1,41 @@
+return {
+  -- 1. Tell Tree-sitter to use your system's tree-sitter parsers on NixOS, 
+  --    but skip compiling manually if a compiler isn't found.
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      -- If on NixOS, avoid automatic downloads that require GCC
+      if vim.fn.executable("nix-instantiate") == 1 then
+        opts.ensure_installed = {} -- Don't let treesitter try to auto-install grammars
+        opts.sync_install = false
+        opts.auto_install = false
+      else
+        -- On CachyOS, standard behavior applies
+        opts.ensure_installed = { "nix", "lua", "markdown", "rust" }
+      end
+    end,
+  },
+
+  -- 2. Force LazyVim to use 'nixd' instead of looking for 'nil' via Mason
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        nixd = {}, -- Use nixd
+        nil_ls = { enabled = false }, -- Force turn off nil so Mason stops crying
+      },
+    },
+  },
+
+  -- 3. Configure Mason to completely ignore Nix tools so it never errors
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      -- Filter out nix tools from Mason auto-install list
+      opts.ensure_installed = vim.tbl_filter(function(val)
+        return val ~= "nil_ls" and val ~= "nixd"
+      end, opts.ensure_installed)
+    end,
+  },
+}
