@@ -14,9 +14,6 @@ set -gx MANPAGER "sh -c 'col -bx | bat -l man --paging=always -p'"
 #set -gx SSH_AUTH_SOCK ~/.bitwarden-ssh-agent.sock
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
 
-function starship_transient_prompt_func
-    starship module character
-end
 starship init fish | source
 # without it transient prompt is not working
 function starship_transient_prompt_func
