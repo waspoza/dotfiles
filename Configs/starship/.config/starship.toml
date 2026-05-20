@@ -77,11 +77,12 @@ disabled = false
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
-style = "bg:#1a3446 fg:yellow"
+style = "bg:#1a3446"
 disabled = false               # Disabled by default
 
 [os.symbols]
-CachyOS = "   "
+CachyOS = "[   ](bg:#1a3446 fg:yellow)"
+NixOS = "[   ](bg:#1a3446 fg:#88c0d0)"
 
 [directory]
 style = "bg:#DA627D"
